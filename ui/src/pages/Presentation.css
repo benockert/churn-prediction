@@ -1,0 +1,18 @@
+.slide-image {
+    max-height: 80%;
+    max-width: 80%;
+}
+
+.right-arrow {
+    position: fixed;
+    font-size: 2.2em;
+    right: 10px;
+    bottom: 10px;
+}
+
+.left-arrow {
+    position: fixed;
+    font-size: 2.2em;
+    left: 10px;
+    bottom: 10px;
+}
