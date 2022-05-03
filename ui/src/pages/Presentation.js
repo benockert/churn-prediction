@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { BsFillArrowRightCircleFill, BsFillArrowLeftCircleFill } from 'react-icons/bs';
+import { BsArrowRightCircle, BsArrowLeftCircle } from 'react-icons/bs';
 import { DefaultLayout } from "../layouts/DefaultLayout";
 import './Presentation.css';
 
@@ -21,8 +21,8 @@ export const Presentation = () => {
     return (
         <DefaultLayout>
             <img src={slideImage} className='slide-image rounded' alt='' />
-            <BsFillArrowRightCircleFill className='right-arrow' onClick={() => slideRight()} />
-            <BsFillArrowLeftCircleFill className='left-arrow' onClick={() => slideLeft()} />
+            <BsArrowRightCircle className='right-arrow' onClick={() => slideRight()} />
+            <BsArrowLeftCircle className='left-arrow' onClick={() => slideLeft()} />
         </DefaultLayout>
     );
 }
