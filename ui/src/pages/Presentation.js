@@ -5,8 +5,7 @@ import Image from 'react-bootstrap/Image'
 import { Loading } from '../components/Loading';
 import './Presentation.css';
 
-export const Presentation = () => {
-    const [slideNumber, setSlideNumber] = useState(1);
+export const Presentation = ({ slideNumber, setSlideNumber }) => {
     const [loading, setLoading] = useState(false); // ideally this would start as true and img onLoad would set to false
 
     const MIN_SLIDE_NUM = 0;
