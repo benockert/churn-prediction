@@ -3,7 +3,6 @@ import { NavBar } from '../components/NavBar';
 import './DefaultLayout.css';
 
 export const DefaultLayout = ({ scroll, children }) => {
-    console.log("Scroll", scroll)
 
     return (
         <Stack >

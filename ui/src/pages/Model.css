@@ -39,3 +39,7 @@
     margin: 5px;
     font-size: 20px;
 }
+
+.range-slider-row {
+    align-items: flex-end;
+}

@@ -9,7 +9,8 @@ export const NavBar = () => {
                 <div className="title nav-title">Bank Client Churn</div>
             </div>
             <div className="nav-options">
-                <Link className="nav-option vertical-line" to="/model">Model</Link>
+                <Link className="nav-option" to="/model">Model</Link>
+                <span className="vertical-line"></span>
                 <Link className="nav-option" to="/presentation">Presentation</Link>
             </div>
         </div>

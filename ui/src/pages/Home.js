@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { DefaultLayout } from "../layouts/DefaultLayout";
-import { api_get, api_post } from '../utils/api.js';
+import { api_get } from '../utils/api.js';
 import { Loading } from '../components/Loading';
 
 export const Home = () => {

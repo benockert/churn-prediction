@@ -34,8 +34,6 @@ export const Model = () => {
     }, [prediction]);
 
     const runModel = async () => {
-        setLoading(true);
-
         // form params string
         let params = '?';
         Object.keys(formValues).forEach(function (key) {
@@ -67,7 +65,17 @@ export const Model = () => {
                 modelForm.push(
                     <Form.Group as={Col}>
                         <Form.Label>{model[key].name}</Form.Label>
-                        <Form.Range className="range-slider" onChange={e => setFormValue(model[key].variable, e.target.value)} />
+                        <Form.Group as={Row} className="range-slider-row">
+                            <Col lg="9" xs="8">
+                                <Form.Range className="range-slider" onChange={e => setFormValue(model[key].variable, e.target.value)} />
+                            </Col>
+                            <Col lg="3" xs="4">
+                                <InputGroup>
+                                    <Form.Control disabled value={formValues && formValues[model[key].variable]} />
+                                    <InputGroup.Text id="basic-addon1">%</InputGroup.Text>
+                                </InputGroup>
+                            </Col>
+                        </Form.Group>
                         <Form.Text className="text-prompt">
                             {model[key].help}
                         </Form.Text>
@@ -149,7 +157,7 @@ export const Model = () => {
     }
 
     return (
-        <DefaultLayout scroll>
+        <DefaultLayout scroll={!prediction}>
             <h2>Bank Client Churn Model</h2>
             {loading ?
                 <Loading />
@@ -161,7 +169,6 @@ export const Model = () => {
                             Reset Form
                         </Button>
                     </>
-
                     :
                     <>
                         <Form className="modelForm">
