@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
 import { DefaultLayout } from "../layouts/DefaultLayout";
 import { api_get, api_post } from '../utils/api.js';
+import { Loading } from '../components/Loading';
 
 export const Home = () => {
-    const [title, setTitle] = useState("");
-    const [names, setNames] = useState("");
+    const [title, setTitle] = useState();
+    const [names, setNames] = useState();
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         api_get('/title').then((res) => {
@@ -18,10 +20,21 @@ export const Home = () => {
         });
     }, []);
 
+    useEffect(() => {
+        setLoading(!title || !names);
+    }, [title, names])
+
     return (
         <DefaultLayout>
-            <h1>{title}</h1>
-            <h3>{names}</h3>
+            {
+                loading ?
+                    <Loading />
+                    :
+                    <>
+                        <h1>{title}</h1>
+                        <h3>{names}</h3>
+                    </>
+            }
         </DefaultLayout>
     );
 }

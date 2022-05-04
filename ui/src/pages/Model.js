@@ -1,50 +1,62 @@
 import { useEffect, useState } from 'react';
 import { DefaultLayout } from "../layouts/DefaultLayout";
-import { BsInfoCircle } from 'react-icons/bs';
+import { BsInfoCircleFill } from 'react-icons/bs';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import InputGroup from 'react-bootstrap/InputGroup';
 import { api_get, api_get_with_params } from '../utils/api.js';
+import { Loading } from '../components/Loading';
 import './Model.css';
 
 export const Model = () => {
     const [model, setModel] = useState();
     const [formValues, setFormValues] = useState();
+    const [loading, setLoading] = useState(true);
+    const [prediction, setPrediction] = useState();
 
     useEffect(() => {
         api_get('/model_vars').then((res) => {
-            console.log(res);
             setModel(res);
+            setLoading(false);
         });
     }, []);
 
     useEffect(() => {
-        model && Object.keys(model).forEach(function (key) {
+        model && !prediction && Object.keys(model).forEach(function (key) {
             setFormValues(f => ({ ...f, [model[key].variable]: model[key].value }))
         });
+    }, [model, prediction]);
 
-    }, [model]);
+    useEffect(() => {
+        prediction && setLoading(false);
+    }, [prediction]);
 
-    console.log(formValues);
     const runModel = async () => {
-        // set loading 
+        setLoading(true);
 
+        // form params string
         let params = '?';
         Object.keys(formValues).forEach(function (key) {
             params += key + "=" + formValues[key] + '&'
         });
-        console.log(params);
 
+        console.log(params)
+
+        // send request
         api_get_with_params('/xgb', params).then((res) => {
-            console.log(res);
-
+            console.log(res)
+            setPrediction(res);
         });
     }
 
     const setFormValue = (key, value) => {
         setFormValues({ ...formValues, [key]: value })
+    }
+
+    const resetPredictor = () => {
+        setPrediction()
     }
 
     // create the model form elements
@@ -139,10 +151,27 @@ export const Model = () => {
     return (
         <DefaultLayout scroll>
             <h2>Bank Client Churn Model</h2>
-            <Form onSubmit={runModel} className="modelForm">
-                {modelFormRows}
-            </Form>
-            <button onClick={() => runModel()} class="submit-button">Run Model</button>
+            {loading ?
+                <Loading />
+                :
+                prediction ?
+                    <>
+                        <p className="prediction-text"><BsInfoCircleFill className="info-icon" />{prediction.text}</p>
+                        <Button onClick={() => resetPredictor()} className="submit-button" variant="primary" type="submit">
+                            Reset Form
+                        </Button>
+                    </>
+
+                    :
+                    <>
+                        <Form className="modelForm">
+                            {modelFormRows}
+                        </Form>
+                        <Button onClick={() => runModel()} className="submit-button" variant="primary" type="submit">
+                            Run Model
+                        </Button>
+                    </>
+            }
         </DefaultLayout>
     );
 }

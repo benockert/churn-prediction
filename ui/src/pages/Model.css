@@ -10,47 +10,16 @@
 
 .submit-button,
 .submit-button:focus {
-    text-decoration: none;
-    letter-spacing: 2px;
-    color: #a8cbe7;
-    outline: 2px solid #a8cbe7 !important;
-    padding: 30px 60px;
-    position: relative;
-    overflow: hidden;
-    transition: color 1s;
-    background-color: #00000000;
-}
-
-.submit-button:hover {
-    color: #ffffff;
-}
-
-.submit-button::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -50px;
-    width: 0;
-    height: 100%;
-    background-color: #a8cbe7;
-    transform: skewX(35deg);
-    z-index: -1;
-    transition: width 0.7s;
-}
-
-.submit-button:hover::before {
-    width: 150%;
-}
-
-/* .submit-button {
     border-color: #a8cbe7;
     background-color: #00000000;
+    box-shadow: none !important;
 }
 
 .submit-button:hover {
     border-color: #a8cbe7;
     background-color: #a8cbe7;
-} */
+    box-shadow: 0 0 0 0.2rem rgb(49 132 253 / 40%) !important;
+}
 
 .row {
     margin-left: 1rem;
@@ -59,4 +28,14 @@
 
 .dummy-col {
     width: 2em;
+}
+
+.prediction-text {
+    font-style: normal;
+    font-weight: 300;
+}
+
+.info-icon {
+    margin: 5px;
+    font-size: 20px;
 }
