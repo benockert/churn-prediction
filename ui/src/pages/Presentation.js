@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { BsArrowRightCircle, BsArrowLeftCircle } from 'react-icons/bs';
 import { DefaultLayout } from "../layouts/DefaultLayout";
+import Image from 'react-bootstrap/Image'
+import { Loading } from '../components/Loading';
 import './Presentation.css';
 
 export const Presentation = () => {
@@ -20,9 +22,10 @@ export const Presentation = () => {
 
     return (
         <DefaultLayout>
-            <img src={slideImage} className='slide-image rounded' alt='' />
+            {/* <Image src={slideImage} className='slide-image' alt='' rounded />
             <BsArrowRightCircle className='right-arrow' onClick={() => slideRight()} />
-            <BsArrowLeftCircle className='left-arrow' onClick={() => slideLeft()} />
+            {slideNumber > 1 && <BsArrowLeftCircle className='left-arrow' onClick={() => slideLeft()} />} */}
+            <Loading />
         </DefaultLayout>
     );
 }

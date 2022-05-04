@@ -1,4 +1,5 @@
 .default-layout {
+    display: block !important;
     align-items: center;
     width: 100%;
     height: 100%;
@@ -34,4 +35,9 @@
     padding: 20px;
     margin-top: 1rem;
     text-align: center;
+}
+
+.content.scroll {
+    max-height: 80%;
+    overflow-y: scroll;
 }
