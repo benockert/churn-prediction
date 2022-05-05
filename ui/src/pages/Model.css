@@ -33,6 +33,7 @@
 .prediction-text {
     font-style: normal;
     font-weight: 300;
+    line-height: 2rem;
 }
 
 .info-icon {

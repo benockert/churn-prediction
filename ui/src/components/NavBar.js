@@ -6,7 +6,7 @@ export const NavBar = () => {
         <div className="navbar">
             <div>
                 <Link to="/"><img className="logo nav-title" src="/images/logo.png" width="40" height="40" alt="bank-client-churn-logo" /></Link>
-                <div className="title nav-title">Bank Client Churn</div>
+                <div className="title nav-title">Bank Client Churn Predictor</div>
             </div>
             <div className="nav-options">
                 <Link className="nav-option" to="/model">Model</Link>

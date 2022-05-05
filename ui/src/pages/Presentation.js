@@ -11,7 +11,7 @@ export const Presentation = ({ slideNumber, setSlideNumber }) => {
     const MIN_SLIDE_NUM = 0;
     const MAX_SLIDE_NUM = 33;
 
-    const slideImage = `https://fina-4390.s3.amazonaws.com/_Project+5+-+ML/${slideNumber}.png`
+    const slideImage = `https://fina-4390.s3.amazonaws.com/Final+Project-+ML/${slideNumber}.png`;
 
     const slideRight = () => {
         let newSlideNumber = slideNumber + 1;

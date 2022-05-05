@@ -66,10 +66,10 @@ export const Model = () => {
                     <Form.Group as={Col}>
                         <Form.Label>{model[key].name}</Form.Label>
                         <Form.Group as={Row} className="range-slider-row">
-                            <Col lg="9" xs="8">
+                            <Col lg="9" md="8" xs="8">
                                 <Form.Range className="range-slider" onChange={e => setFormValue(model[key].variable, e.target.value)} />
                             </Col>
-                            <Col lg="3" xs="4">
+                            <Col lg="3" md="4" xs="4">
                                 <InputGroup>
                                     <Form.Control disabled value={formValues && formValues[model[key].variable]} />
                                     <InputGroup.Text id="basic-addon1">%</InputGroup.Text>
