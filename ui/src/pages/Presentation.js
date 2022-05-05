@@ -8,19 +8,17 @@ import './Presentation.css';
 export const Presentation = ({ slideNumber, setSlideNumber }) => {
     const [loading, setLoading] = useState(false); // ideally this would start as true and img onLoad would set to false
 
-    const MIN_SLIDE_NUM = 0;
-    const MAX_SLIDE_NUM = 33;
+    const MIN_SLIDE_NUM = 1;
+    const MAX_SLIDE_NUM = 22;
 
     const slideImage = `https://fina-4390.s3.amazonaws.com/Final+Project-+ML/${slideNumber}.png`;
 
     const slideRight = () => {
-        let newSlideNumber = slideNumber + 1;
-        newSlideNumber < MAX_SLIDE_NUM && setSlideNumber(newSlideNumber); // update to match # of Canva slides
+        slideNumber < MAX_SLIDE_NUM && setSlideNumber(slideNumber + 1); // update to match # of Canva slides
     };
 
     const slideLeft = () => {
-        let newSlideNumber = slideNumber - 1;
-        newSlideNumber > MIN_SLIDE_NUM && setSlideNumber(newSlideNumber);
+        slideNumber > MIN_SLIDE_NUM && setSlideNumber(slideNumber - 1);
     };
 
     return (
@@ -33,8 +31,8 @@ export const Presentation = ({ slideNumber, setSlideNumber }) => {
                         <Image src={slideImage} className='slide-image' alt='' rounded onError={() => setLoading(true)} />
                     </>
             }
-            {slideNumber > MIN_SLIDE_NUM + 1 && <BsArrowLeftCircle className='left-arrow' onClick={() => slideLeft()} />}
-            {slideNumber < MAX_SLIDE_NUM - 1 && <BsArrowRightCircle className='right-arrow' onClick={() => slideRight()} />}
+            {slideNumber > MIN_SLIDE_NUM && <BsArrowLeftCircle className='left-arrow' onClick={() => slideLeft()} />}
+            {slideNumber < MAX_SLIDE_NUM && <BsArrowRightCircle className='right-arrow' onClick={() => slideRight()} />}
         </DefaultLayout>
     );
 }
