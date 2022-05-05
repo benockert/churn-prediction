@@ -41,7 +41,7 @@ export const Home = () => {
                         <h1 className="title-text">{title}</h1>
                         <h3>{names}</h3>
                         <span>
-                            <Button onClick={() => openPage("https://github.com/benockert/churn-prediction/tree/main/ui")} className="submit-button home-button" variant="primary" type="submit">
+                            <Button onClick={() => openPage("https://github.com/benockert/churn-prediction")} className="submit-button home-button" variant="primary" type="submit">
                                 Source on <BsGithub />
                             </Button>
                             <Button onClick={() => openPage("https://fina-4390.s3.amazonaws.com/Final+Project-+ML+full.pdf")} className="submit-button home-button" variant="primary" type="submit">
